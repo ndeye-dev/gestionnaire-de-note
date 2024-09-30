@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Appli JS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="bg-image h-100" id="sec" style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+          <main class="container mt-4 py-4 vh-100">
+            <div class="row mb-4">
+              <div class="col-md-4 mb-3">
+                <div class="card text-white gradient-custom-4">
+                  <div class="card-body">
+                    <h5 class="card-title">Nombre d'étudiants</h5>
+                    <p id="compteur" class="card-text">0</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="card text-white gradient-custom-4">
+                  <div class="card-body">
+                    <h5 class="card-title">Somme totale des notes</h5>
+                    <p id="total-sum" class="card-text">0</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="card text-white gradient-custom-4">
+                  <div class="card-body">
+                    <h5 class="card-title">Moyenne la plus élevée</h5>
+                    <p id="grande" class="card-text">0</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+            <div class="row">
+                <div class=" col-lg-6 col-md-4 mb-4">
+                    <input type="text" id="search" class="form-control w-50" placeholder="Recherche ...">
+                  </div>
+
+                  <div class="col-lg-6 col-md-4 mb-3">
+                    <button class="btn butt bg-white fw-bold" data-bs-toggle="modal" data-bs-target="#addStudentModal">Ajouter un étudiant</button>
+                  </div>
+            </div>
+
+            <div id="table-container"></div>
+            <div id="icone">
+             
+            </div>
+              <!-- pagination -->
+              <div id="pagination-controls"></div>
+
+          </main>
+        
+          <!-- Modal pour ajouter un étudiant -->
+          <div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="addStudentModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="addStudentModalLabel">Ajouter un étudiant</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="formulaire">
+                    <div class="mb-3">
+                      <label for="first-name" class="form-label">Prénom</label>
+                      <input type="text" class="form-control" id="first-name" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="last-name" class="form-label">Nom</label>
+                      <input type="text" class="form-control" id="last-name" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="note" class="form-label">Note</label>
+                      <input type="number" class="form-control" id="note" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="moyenn" class="form-label">Moyenne</label>
+                      <input type="number" step="0.01" class="form-control" id="moyenn" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="ajout">Ajouter</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Button trigger modal -->
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modifier l'etudiant</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                 <form id="formul">
+                  <div class="mb-3">
+                    <label for="first" class="form-label">Prénom</label>
+                    <input type="text" class="form-control" id="first" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="last" class="form-label">Nom</label>
+                    <input type="text" class="form-control" id="last" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="note" class="form-label">Note</label>
+                    <input type="number" class="form-control" id="notee" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="moyennn" class="form-label">Moyenne</label>
+                    <input type="number" step="0.01" class="form-control" id="moyennn" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary" id="ajout">Ajouter</button>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+    <!-- <button onclick="rtn()">Retourner</button> -->
+    <script src="script.js"></script>
+   
+    <script type="module">
+      
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+      import { getFirestore, addDoc, collection , getDocs, doc} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
+     
+      const firebaseConfig = {
+        apiKey: "AIzaSyB73Ow900rSL1cJ7b8DHwNh5WlWQxXlKUg",
+        authDomain: "appli-f847c.firebaseapp.com",
+        projectId: "appli-f847c",
+        storageBucket: "appli-f847c.appspot.com",
+        messagingSenderId: "760643767756",
+        appId: "1:760643767756:web:12881cb68cd2b8020b2169",
+        measurementId: "G-NP5CL30KVV"
+      };
+    
+     // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      // Initialize Cloud Firestore and get a reference to the service
+      const db = getFirestore(app);
+
+      // const firstName = document.getElementById('first-name');
+      // const lastName = document.getElementById('last-name');
+      // const note = parseFloat(document.getElementById('note'));
+      // const moyenn = parseFloat(document.getElementById('moyenn'));
+
+const ajouter = document.getElementById('formulaire');
+ajouter.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+//       // addStude/nt(firstName, lastName, note, moyenn);
+
+//       function addStudent(prenom, nom, note, moyenne) {
+//       studentss.push({ prenom, nom, note, moyenne });
+//       localStorage.setItem('table', JSON.stringify(studentss));
+//       tableaux();
+//       lesCard();
+//     }
+//     // localStorage.setItem('table', JSON.stringify(studentss));
+
+//       const docRef =  addDoc(collection(db, "informations"), {
+//       prenom:firstName.value,
+//       nom: lastName.value,
+//       note: note.value,
+//       moyenne: moyenn.value
+
+//       // prenom:"",
+//       // nom: "",
+//       // note: "",
+//       // moyenne: ""
+//    });
+
+//  console.log("Document written with ID: ", docRef.id);
+ 
+//       ajouter.reset();
+//       const modal = bootstrap.Modal.getInstance(document.getElementById('addStudentModal'));
+//       modal.hide();
+
+ // Récupérer les valeurs des champs du formulaire
+ const firstName = document.getElementById('first-name').value;
+  const lastName = document.getElementById('last-name').value;
+  const note = parseInt(document.getElementById('note').value);
+  const moyenn = parseInt(document.getElementById('moyenn').value);
+
+  const etudiant = {
+    prenom: firstName,
+    nom: lastName,
+    note: note,
+    moyenne: moyenn
+  };
+
+  const collectionRef = collection(db, "informations");
+  
+  const addStudent =  () => {
+     addDoc(collectionRef, etudiant);
+    console.log("Document written with ID: ", docRef.id);
+
+
+    ajouter.reset();
+    const modal = bootstrap.Modal.getInstance(document.getElementById('addStudentModal'));
+    modal.hide();
+  };
+
+  addStudent();
+
+    });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

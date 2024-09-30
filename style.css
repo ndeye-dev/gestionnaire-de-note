@@ -1,0 +1,42 @@
+
+    .gradient-custom-4 {
+   
+    background: hsl(226, 83%, 65%);
+    background: hsl(226, 83%, 65%);
+    background: hsl(226, 83%, 65%);
+    }
+    .bleu{
+        background: hsl(226, 83%, 65%);
+        background: hsl(226, 83%, 65%);
+        background: hsl(226, 83%, 65%);
+        font-size: 15px;
+        padding: 15px;
+    }
+    .class{
+        text-decoration: none;
+    }
+    .butt{
+        color: hsl(226, 83%, 65%)blue;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    .fa-regular:hover{
+        color: #758df7;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .fa-solid{
+        color: rgb(168, 12, 12);
+        cursor: pointer;
+    }
